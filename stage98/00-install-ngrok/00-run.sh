@@ -1,2 +1,2 @@
-mkdir -p ${ROOTFS_DIR}/opt/ngrok
-tar Czxf ${ROOTFS_DIR}/opt/ngrok files/ngrok
+mkdir -p ${ROOTFS_DIR}/etc/ngrok
+tar Czxf ${ROOTFS_DIR} files/ngrok
