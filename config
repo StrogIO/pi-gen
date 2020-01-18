@@ -1,3 +1,4 @@
 
 IMG_NAME="Comitup"
 ENABLE_SSH=1
+WORK_DIR="/dev/shm/work"
