@@ -14,7 +14,7 @@ mkdir -p ${ROOTFS_DIR}/boot/greengrass/certs
 mkdir -p ${ROOTFS_DIR}/boot/greengrass/config
 
 # copy root cert into /greengrass/certs
-cp files/root.ca.pem ${ROOTFS_DIR}/greengrass/certs
+cp files/root.ca.pem ${ROOTFS_DIR}/greengrass/certs/root.ca.pem
 
 # For twitch stream we want viewers to see our text BIG!
 # We also don't need to waste memory on GPU by default!
@@ -23,11 +23,3 @@ framebuffer_width=800
 framebuffer_height=400
 gpu_mem=16
 EOF
-
-# Grab samples which also has the dependencies checker utility.
-if [ -d ${ROOTFS_DIR}/home/pi/aws-greengrass-samples ]; then
-  cd ${ROOTFS_DIR}/home/pi/aws-greengrass-samples;
-  git pull --rebase origin master
-else
-  git clone git://github.com/aws-samples/aws-greengrass-samples ${ROOTFS_DIR}/home/pi/aws-greengrass-samples
-fi
