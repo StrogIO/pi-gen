@@ -11,7 +11,7 @@ mkdir -p /greengrass/config
 cp -a /boot/greengrass/certs/ /greengrass
 cp -a /boot/greengrass/config/ /greengrass
 cd /greengrass/ggc/core
-./greengrassd \$@
+sudo ./greengrassd \$@
 EOF
 chmod 755 /etc/init.d/S02greengrass
 
