@@ -1,6 +1,6 @@
 #!/bin/bash
 
-install -m 644 files/sources.list "${ROOTFS_DIR}/etc/apt/"
+install -m 644 files/greengrass.list "${ROOTFS_DIR}/etc/apt/sources.list.d/"
 sudo apt install -t jessie-backports openjdk-8-jdk ca-certificates-java
 
 cat <<EOF >>${ROOTFS_DIR}/etc/sysctl.d/98-rpi.conf
