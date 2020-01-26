@@ -1,5 +1,8 @@
 #!/bin/bash
 
+install -m 644 files/sources.list "${ROOTFS_DIR}/etc/apt/"
+sudo apt install -t jessie-backports openjdk-8-jdk ca-certificates-java
+
 cat <<EOF >>${ROOTFS_DIR}/etc/sysctl.d/98-rpi.conf
 fs.protected_hardlinks = 1
 fs.protected_symlinks = 1
