@@ -13,18 +13,23 @@ cp -a /boot/greengrass/config/ /greengrass
 cd /greengrass/ggc/core
 ./greengrassd \$@
 EOF
-chmod 777 /etc/init.d/S02greengrass
 
 cat <<EOF >/etc/systemd/system/greengrass.service
 [Unit]
 Description=AWS Greengrass Service
 
 [Service]
-Type=notify
+Type=forking
+PIDFile=/var/run/greengrass.pid
 ExecStart=/etc/init.d/S02greengrass start
+ExecReload=/etc/init.d/S02greengrass restart
+ExecStop=/etc/init.d/S02greengrass stop
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
 EOF
+
+chmod 777 /etc/systemd/system/greengrass.service
 systemctl enable greengrass.service
+systemctl start greengrass.service
