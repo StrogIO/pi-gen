@@ -11,8 +11,10 @@ mkdir -p /greengrass/config
 cp -a /boot/greengrass/certs/ /greengrass
 cp -a /boot/greengrass/config/ /greengrass
 cd /greengrass/ggc/core
-./greengrassd \$@
+sudo ./greengrassd \$@
 EOF
+
+chmod 755 /etc/init.d/S02greengrass
 
 cat <<EOF >/etc/systemd/system/greengrass.service
 [Unit]
@@ -30,6 +32,5 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOF
 
-chmod 777 /etc/systemd/system/greengrass.service
 systemctl enable greengrass.service
 systemctl start greengrass.service
