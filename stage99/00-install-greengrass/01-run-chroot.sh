@@ -6,8 +6,11 @@ adduser ggc_user ggc_group
 
 cat <<EOF >/etc/init.d/S02greengrass
 #!/bin/sh
-mkdir -p /greengrass/certs
+mkdir -p /greengrass/resources
 mkdir -p /greengrass/config
+mkdir -p /greengrass/db
+sudo chmod 0775 /greengrass/resources
+sudo chmod 0775 /greengrass/db
 cp -a /boot/greengrass/certs/ /greengrass
 cp -a /boot/greengrass/config/ /greengrass
 cd /greengrass/ggc/core
