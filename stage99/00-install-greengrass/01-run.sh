@@ -20,7 +20,10 @@ cp files/root.ca.pem ${ROOTFS_DIR}/greengrass/certs/root.ca.pem
 # For twitch stream we want viewers to see our text BIG!
 # We also don't need to waste memory on GPU by default!
 cat <<EOF >>${ROOTFS_DIR}/boot/config.txt
+dtoverlay=dwc2
 framebuffer_width=800
 framebuffer_height=400
 gpu_mem=16
 EOF
+
+sed -i -e '1{s/$/ modules-load=dwc2,g_ether/}' ${ROOTFS_DIR}/boot/cmdline.txt
